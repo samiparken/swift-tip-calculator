@@ -35,14 +35,32 @@ class CalculatorVC: UIViewController {
     }
     
     private func layout() {
-     
+        view.addSubview(vStackView)
+                
+        // Constraints
         vStackView.snp.makeConstraints { make in
             make.leading.equalTo(view.snp.leadingMargin).offset(16)
             make.trailing.equalTo(view.snp.trailingMargin).offset(-16)
             make.bottom.equalTo(view.snp.bottomMargin).offset(-16)
             make.top.equalTo(view.snp.topMargin).offset(16)
-
         }            
+        
+        // Height
+        logoView.snp.makeConstraints{ make in
+            make.height.equalTo(48)
+        }
+        resultView.snp.makeConstraints{ make in
+            make.height.equalTo(224)
+        }
+        billInputView.snp.makeConstraints{ make in
+            make.height.equalTo(56)
+        }
+        tipInputView.snp.makeConstraints{ make in
+            make.height.equalTo(56+56+15)
+        }
+        splitInputView.snp.makeConstraints{ make in
+            make.height.equalTo(56)
+        }
     }
 }
 
