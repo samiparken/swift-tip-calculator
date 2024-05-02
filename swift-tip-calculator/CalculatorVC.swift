@@ -18,11 +18,12 @@ class CalculatorVC: UIViewController {
         
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-        logoView,
-        resultView,
-        billInputView,
-        tipInputView,
-        splitInputView
+            logoView,
+            resultView,
+            billInputView,
+            tipInputView,
+            splitInputView,
+            UIView() // added for flex height to remove warning
         ])
         stackView.axis = .vertical
         stackView.spacing = 36
