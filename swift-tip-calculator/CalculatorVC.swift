@@ -35,6 +35,7 @@ class CalculatorVC: UIViewController {
     }
     
     private func layout() {
+        view.backgroundColor = .white
         view.addSubview(vStackView)
                 
         // Constraints
