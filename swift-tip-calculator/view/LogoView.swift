@@ -26,21 +26,32 @@ class LogoView: UIView {
     }()
     
     private let bottomLabel: UILabel = {
-       
-        
+        LabelFactory.build(
+            text: "Calculator",
+            font: ThemeFont.demibold(ofSize: 20),
+            textAlignment: .left)
     }()
     
-    private lazy var hStackView: UIStackView = {
+    private lazy var vLabelStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [
+            topLabel,
+            bottomLabel
+        ])
+        view.axis = .vertical
+        view.spacing = -4
+        return view
+    }()
         
+    private lazy var hMainStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [
+            imageView,
+            vLabelStackView
         ])
         view.axis = .horizontal
         view.spacing = 8
         view.alignment = .center
         return view
     }()
-    
-    
     
     init() {
         super.init(frame: .zero)
@@ -51,8 +62,14 @@ class LogoView: UIView {
     }
     
     private func layout() {
-
-
-
+        addSubview(hMainStackView)
+        hMainStackView.snp.makeConstraints{ make in
+            make.top.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+        // Square image
+        imageView.snp.makeConstraints{ make in
+            make.height.equalTo(imageView.snp.width)
+        }
     }
 }
