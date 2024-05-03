@@ -39,9 +39,14 @@ class ResultView: UIView {
         
     private lazy var hTotalStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-        AmountView(),
+        AmountView(
+            title: "Total bill",
+            textAlignment: .left),
         UIView(),  // for empty space between amount views
-        AmountView(),
+        AmountView(
+            title: "Total tip",
+            textAlignment: .right
+        ),
         ])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -95,13 +100,52 @@ class ResultView: UIView {
         view.heightAnchor.constraint(equalToConstant: height).isActive = true
         return view
     }
-    
-    
 }
 
 class AmountView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame:frame)
+    
+    private let title: String
+    private let textAlignment: NSTextAlignment
+
+    private lazy var titleLabel: UILabel = {
+        LabelFactory.build(
+            text: title,
+            font: ThemeFont.regular(ofSize: 18),
+            textColor: ThemeColor.text,
+            textAlignment: textAlignment)
+    }()
+    
+    // "lazy var" to use class variables
+    private lazy var amountLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = textAlignment
+        label.textColor = ThemeColor.primary
+        let text = NSMutableAttributedString (
+            string:"$0",
+            attributes: [
+                .font: ThemeFont.bold(ofSize: 24)
+            ])
+        text.addAttributes([
+            .font: ThemeFont.bold(ofSize: 18)
+        ], range: NSMakeRange(0, 1))
+        label.attributedText = text
+        return label
+    }()
+    
+    private lazy var vStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            titleLabel,
+            amountLabel
+        ])
+         stackView.axis = .vertical
+         return stackView
+        
+    }()
+        
+    init(title: String, textAlignment: NSTextAlignment) {
+        self.title = title
+        self.textAlignment = textAlignment
+        super.init(frame: .zero)
         layout()
     }
     
@@ -110,6 +154,9 @@ class AmountView: UIView {
     }
     
     private func layout() {
-        backgroundColor = .red
+        addSubview(vStackView)
+        vStackView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
     }
 }
