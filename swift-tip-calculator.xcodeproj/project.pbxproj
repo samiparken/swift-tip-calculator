@@ -29,6 +29,7 @@
 		31753E5B2BE3867F009B0E6D /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 31753E5A2BE3867F009B0E6D /* CombineCocoa */; };
 		31753E5E2BE38698009B0E6D /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 31753E5D2BE38698009B0E6D /* SnapshotTesting */; };
 		31753E602BE386A2009B0E6D /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 31753E5F2BE386A2009B0E6D /* CombineCocoa */; };
+		31A0ED292BE4E5D5000E7D39 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		316565BD2BE3CB080008DE4E /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
 		316565C02BE3CB720008DE4E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		316565C32BE3D10F0008DE4E /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				316565C02BE3CB720008DE4E /* UIColor+Extension.swift */,
+				31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				314E041B2BE385BD0048F8C6 /* CalculatorVC.swift in Sources */,
+				31A0ED292BE4E5D5000E7D39 /* UIView+Extension.swift in Sources */,
 				316565B12BE3C07E0008DE4E /* LogoView.swift in Sources */,
 				316565BC2BE3CAF50008DE4E /* ThemeColor.swift in Sources */,
 				316565C12BE3CB720008DE4E /* UIColor+Extension.swift in Sources */,
