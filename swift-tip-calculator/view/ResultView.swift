@@ -16,17 +16,21 @@ class ResultView: UIView {
             font: ThemeFont.demibold(ofSize: 18))
     }()
     
-    private let amountPerPersonLabel: UILabel = {
+    private let amountPerPersonLabel: UILabel  = {
+        
+        let amount = "0,00"
+        let currency = "kr"
+
         let label = UILabel()
         label.textAlignment = .center
         let text = NSMutableAttributedString(
-            string: "$0",
+            string: amount + currency,
             attributes: [
                 .font: ThemeFont.bold(ofSize: 48)
             ])
         text.addAttributes([
             .font: ThemeFont.bold(ofSize: 24)
-        ], range: NSMakeRange(0, 1))
+        ], range: NSMakeRange(amount.count, currency.count))
         label.attributedText = text
         return label
     }()
@@ -117,17 +121,20 @@ class AmountView: UIView {
     
     // "lazy var" to use class variables
     private lazy var amountLabel: UILabel = {
+        let amount = "0,00"
+        let currency = "kr"
+
         let label = UILabel()
         label.textAlignment = textAlignment
         label.textColor = ThemeColor.primary
         let text = NSMutableAttributedString (
-            string:"$0",
+            string: amount + currency,
             attributes: [
                 .font: ThemeFont.bold(ofSize: 24)
             ])
         text.addAttributes([
             .font: ThemeFont.bold(ofSize: 18)
-        ], range: NSMakeRange(0, 1))
+        ], range: NSMakeRange(amount.count, currency.count))
         label.attributedText = text
         return label
     }()
