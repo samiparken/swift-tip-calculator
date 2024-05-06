@@ -44,7 +44,7 @@ class BillInputView: UIView {
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(
             title: "Done",
-            style: .plain,
+            style: .done,
             target: self,
             action: #selector(doneButtonTapped))
         toolBar.items = [
@@ -101,7 +101,7 @@ class BillInputView: UIView {
     }
         
     @objc private func doneButtonTapped() {
-        
+        textField.endEditing(true) //close keyboard
     }
 }
 
