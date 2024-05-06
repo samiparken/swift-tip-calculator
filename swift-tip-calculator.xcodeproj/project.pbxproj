@@ -130,10 +130,11 @@
 		314E04152BE385BD0048F8C6 /* swift-tip-calculator */ = {
 			isa = PBXGroup;
 			children = (
-				316565C22BE3D0F60008DE4E /* factory */,
-				316565BF2BE3CB520008DE4E /* extension */,
-				316565BA2BE3CAD70008DE4E /* config */,
-				316565AF2BE3C0420008DE4E /* view */,
+				3184D2442BE94DBB00817BB0 /* Model */,
+				316565C22BE3D0F60008DE4E /* Factory */,
+				316565BF2BE3CB520008DE4E /* Extension */,
+				316565BA2BE3CAD70008DE4E /* Config */,
+				316565AF2BE3C0420008DE4E /* View */,
 				314E04162BE385BD0048F8C6 /* AppDelegate.swift */,
 				314E04182BE385BD0048F8C6 /* SceneDelegate.swift */,
 				314E041A2BE385BD0048F8C6 /* CalculatorVC.swift */,
@@ -161,7 +162,7 @@
 			path = "swift-tip-calculatorUITests";
 			sourceTree = "<group>";
 		};
-		316565AF2BE3C0420008DE4E /* view */ = {
+		316565AF2BE3C0420008DE4E /* View */ = {
 			isa = PBXGroup;
 			children = (
 				316565B02BE3C07E0008DE4E /* LogoView.swift */,
@@ -171,33 +172,33 @@
 				316565B82BE3C26E0008DE4E /* SplitInputView.swift */,
 				3184D2422BE940C200817BB0 /* TwoLineLabelView.swift */,
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
-		316565BA2BE3CAD70008DE4E /* config */ = {
+		316565BA2BE3CAD70008DE4E /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				316565BB2BE3CAF50008DE4E /* ThemeColor.swift */,
 				316565BD2BE3CB080008DE4E /* ThemeFont.swift */,
 			);
-			path = config;
+			path = Config;
 			sourceTree = "<group>";
 		};
-		316565BF2BE3CB520008DE4E /* extension */ = {
+		316565BF2BE3CB520008DE4E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				316565C02BE3CB720008DE4E /* UIColor+Extension.swift */,
 				31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */,
 			);
-			path = extension;
+			path = Extension;
 			sourceTree = "<group>";
 		};
-		316565C22BE3D0F60008DE4E /* factory */ = {
+		316565C22BE3D0F60008DE4E /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				316565C32BE3D10F0008DE4E /* LabelFactory.swift */,
 			);
-			path = factory;
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		31753E592BE3867F009B0E6D /* Frameworks */ = {
@@ -205,6 +206,13 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3184D2442BE94DBB00817BB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -45,6 +45,7 @@ class TipInputView: UIView {
         return stackView
     }()
 
+    // custom tip button at the bottom
     private lazy var customTipButton: UIButton = {
         let button = UIButton()
         button.setTitle("Custom tip", for: .normal)
@@ -92,9 +93,6 @@ class TipInputView: UIView {
         allButtonsVStackView.snp.makeConstraints { make in
             make.top.bottom.trailing.equalToSuperview()
         }
-
-        
-
     }
     private func buildTipButton(tip: Tip) -> UIButton {
         let button = UIButton(type: .custom)
