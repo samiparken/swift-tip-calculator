@@ -70,8 +70,11 @@ class BillInputView: UIView {
     
     // Methods
     private func layout() {
+        //addSubview(billInputLabelView)
+        //addSubview(textFieldContainerView)
+        // it does the same as above
         [billInputLabelView, textFieldContainerView].forEach(addSubview(_:))
-        
+                
         billInputLabelView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.centerY.equalTo(textFieldContainerView.snp.centerY)
@@ -83,6 +86,19 @@ class BillInputView: UIView {
             make.top.trailing.bottom.equalToSuperview()
         }
         
+        textFieldContainerView.addSubview(currencyDomincationLabel)
+        textFieldContainerView.addSubview(textField)
+        
+        currencyDomincationLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.equalTo(textFieldContainerView.snp.leading).offset(16)
+        }
+        
+        textField.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.equalTo(currencyDomincationLabel.snp.trailing).offset(16)
+            make.trailing.equalTo(textFieldContainerView.snp.trailing).offset(-16)
+        }
     }
         
     @objc private func doneButtonTapped() {
