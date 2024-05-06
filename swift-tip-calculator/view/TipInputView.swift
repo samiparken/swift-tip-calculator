@@ -9,9 +9,19 @@ import UIKit
 
 class TipInputView: UIView {
 
+    // Label view
+    private let labelView: TwoLineLabelView = {
+        let view = TwoLineLabelView()
+        view.configure(
+            topText: "Choose",
+            bottomText: "your tip")
+        return view
+    }()
+       
     
+
     
-    
+    // INIT
     init() {
         super.init(frame: .zero)
         layout()
