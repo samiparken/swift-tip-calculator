@@ -9,7 +9,6 @@ import UIKit
 
 class ResultView: UIView {
     
-// MARK: -
     private let headerLabel: UILabel = {
         LabelFactory.build(
             text: "Total p/person",
@@ -20,7 +19,7 @@ class ResultView: UIView {
         
         let amount = "0,00"
         let currency = "kr"
-
+        
         let label = UILabel()
         label.textAlignment = .center
         let text = NSMutableAttributedString(
@@ -40,17 +39,17 @@ class ResultView: UIView {
         view.backgroundColor = ThemeColor.separator
         return view
     }()
-        
+    
     private lazy var hTotalStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-        AmountView(
-            title: "Total bill",
-            textAlignment: .left),
-        UIView(),  // for empty space between amount views
-        AmountView(
-            title: "Total tip",
-            textAlignment: .right
-        ),
+            AmountView(
+                title: "Total bill",
+                textAlignment: .left),
+            UIView(),  // for empty space between amount views
+            AmountView(
+                title: "Total tip",
+                textAlignment: .right
+            ),
         ])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -59,18 +58,19 @@ class ResultView: UIView {
     
 // MARK: - Result View
     private lazy var vOverviewStackView: UIStackView = {
-       let stackView = UIStackView(arrangedSubviews: [
-        headerLabel,
-        amountPerPersonLabel,
-        horizontalLiveView,
-        buildSpacerView(height: 0), //for margin below horizontal line
-        hTotalStackView
-       ])
+        let stackView = UIStackView(arrangedSubviews: [
+            headerLabel,
+            amountPerPersonLabel,
+            horizontalLiveView,
+            buildSpacerView(height: 0), //for margin below horizontal line
+            hTotalStackView
+        ])
         stackView.axis = .vertical
         stackView.spacing = 8
         return stackView
     }()
     
+// MARK: - Init View
     init() {
         super.init(frame: .zero)
         layout()
@@ -78,8 +78,6 @@ class ResultView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-// MARK: - Rendering on screen
     private func layout() {
         backgroundColor = .white
         addSubview(vOverviewStackView)
@@ -110,7 +108,7 @@ class AmountView: UIView {
     
     private let title: String
     private let textAlignment: NSTextAlignment
-
+    
     private lazy var titleLabel: UILabel = {
         LabelFactory.build(
             text: title,
@@ -123,7 +121,7 @@ class AmountView: UIView {
     private lazy var amountLabel: UILabel = {
         let amount = "0,00"
         let currency = "kr"
-
+        
         let label = UILabel()
         label.textAlignment = textAlignment
         label.textColor = ThemeColor.primary
@@ -144,11 +142,11 @@ class AmountView: UIView {
             titleLabel,
             amountLabel
         ])
-         stackView.axis = .vertical
-         return stackView
+        stackView.axis = .vertical
+        return stackView
         
     }()
-        
+    
     init(title: String, textAlignment: NSTextAlignment) {
         self.title = title
         self.textAlignment = textAlignment
