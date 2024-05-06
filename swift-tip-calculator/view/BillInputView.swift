@@ -111,24 +111,23 @@ class BillInputLabelView: UIView {
     private let topLabel: UILabel = {
         LabelFactory.build(
             text: "Enter",
-            font: ThemeFont.demibold(ofSize: 20),
+            font: ThemeFont.demibold(ofSize: 18),
             textAlignment: .left)
     }()
-    
     private let bottomLabel: UILabel = {
         LabelFactory.build(
             text: "your bill",
-            font: ThemeFont.regular(ofSize: 18),
+            font: ThemeFont.regular(ofSize: 16),
             textAlignment: .left)
     }()
-    
     private lazy var vLabelStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [
             topLabel,
             bottomLabel
         ])
         view.axis = .vertical
-        view.spacing = -2
+        view.alignment = .leading
+        view.spacing = -4
         return view
     }()
 
@@ -145,7 +144,8 @@ class BillInputLabelView: UIView {
         addSubview(vLabelStackView)
         
         vLabelStackView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
+            make.edges.equalToSuperview()  // for top, leading, bottom, trailing edges
+            //make.top.bottom.equalToSuperview() // only for top and bottom
         }
     }
 }
