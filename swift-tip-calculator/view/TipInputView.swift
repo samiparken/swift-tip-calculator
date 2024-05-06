@@ -99,12 +99,13 @@ class TipInputView: UIView {
     private func buildTipButton(tip: Tip) -> UIButton {
         let button = UIButton(type: .custom)
         button.backgroundColor = ThemeColor.primary
-        button.tintColor = .white 
+        button.tintColor = .white //it's overwritten by the attributes below
         button.addCornerRadius(radius: 8.0)
         let text = NSMutableAttributedString(
             string: tip.stringValue,
             attributes: [
-                .font: ThemeFont.bold(ofSize: 20)
+                .font: ThemeFont.bold(ofSize: 20),
+                .foregroundColor: UIColor.white  //this will apply white color on the attributed text
             ])
         //percent
         text.addAttributes([
