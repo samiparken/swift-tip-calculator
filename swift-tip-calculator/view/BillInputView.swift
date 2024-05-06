@@ -77,9 +77,10 @@ class BillInputView: UIView {
                 
         billInputLabelView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
-            make.centerY.equalTo(textFieldContainerView.snp.centerY)
             make.width.equalTo(68)
-            make.trailing.equalTo(textFieldContainerView.snp.leading).offset(-24)
+            make.height.equalTo(40)
+            make.centerY.equalTo(textFieldContainerView.snp.centerY) //align horizontal
+            make.trailing.equalTo(textFieldContainerView.snp.leading ).offset(-24) // set order in horizontal
         }
         
         //TextFieldContainer
@@ -106,17 +107,46 @@ class BillInputView: UIView {
 
 class BillInputLabelView: UIView {
     
+    // View constants
+    private let topLabel: UILabel = {
+        LabelFactory.build(
+            text: "Enter",
+            font: ThemeFont.demibold(ofSize: 20),
+            textAlignment: .left)
+    }()
+    
+    private let bottomLabel: UILabel = {
+        LabelFactory.build(
+            text: "your bill",
+            font: ThemeFont.regular(ofSize: 18),
+            textAlignment: .left)
+    }()
+    
+    private lazy var vLabelStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [
+            topLabel,
+            bottomLabel
+        ])
+        view.axis = .vertical
+        view.spacing = -2
+        return view
+    }()
+
+    
+    //Init
     init() {
         super.init(frame: .zero)
         layout()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func layout() {
-        backgroundColor = .red
+        addSubview(vLabelStackView)
+        
+        vLabelStackView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+        }
     }
 }
 
