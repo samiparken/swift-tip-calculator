@@ -26,11 +26,11 @@ class TipInputView: UIView {
         return button
     }()
     private lazy var fifteenPercentTipButton: UIButton = {
-        let button = buildTipButton(tip: .tenPercent)
+        let button = buildTipButton(tip: .fifteenPercent)
         return button
     }()
     private lazy var twentyPercentTipButton: UIButton = {
-        let button = buildTipButton(tip: .tenPercent)
+        let button = buildTipButton(tip: .twentyPercent)
         return button
     }()
     private lazy var buttonsHStackView: UIStackView = {
@@ -77,7 +77,22 @@ class TipInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func layout() {
-        backgroundColor = .systemPink
+        [labelView, allButtonsVStackView].forEach(addSubview(_:))
+        
+        
+        labelView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.width.equalTo(68)
+            make.height.equalTo(40)
+            make.centerY.equalTo(allButtonsVStackView.snp.centerY) //align horizontal
+            make.trailing.equalTo(allButtonsVStackView.snp.leading ).offset(-24) // set order in horizontal
+        }
+        
+        //TextFieldContainer
+        allButtonsVStackView.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalToSuperview()
+        }
+
     }
     private func buildTipButton(tip: Tip) -> UIButton {
         let button = UIButton(type: .custom)
@@ -89,7 +104,7 @@ class TipInputView: UIView {
             attributes: [
                 .font: ThemeFont.bold(ofSize: 20)
             ])
-        
+        //percent
         text.addAttributes([
             .font: ThemeFont.bold(ofSize: 14)
         ], range: NSMakeRange(2, 1))
