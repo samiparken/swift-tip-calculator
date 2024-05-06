@@ -20,22 +20,20 @@ class TipInputView: UIView {
         return view
     }()
     
+    // hStackView for tip buttons
     private lazy var tenPercentTipButton: UIButton = {
         let button = buildTipButton(tip: .tenPercent)
         return button
     }()
-
     private lazy var fifteenPercentTipButton: UIButton = {
         let button = buildTipButton(tip: .tenPercent)
         return button
     }()
-    
     private lazy var twentyPercentTipButton: UIButton = {
         let button = buildTipButton(tip: .tenPercent)
         return button
     }()
-    
-    private lazy var hStackView: UIStackView = {
+    private lazy var buttonsHStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             tenPercentTipButton,
             fifteenPercentTipButton,
@@ -47,9 +45,30 @@ class TipInputView: UIView {
         return stackView
     }()
 
+    private lazy var customTipButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Custom tip", for: .normal)
+        button.titleLabel?.font = ThemeFont.bold(ofSize: 20)
+        button.backgroundColor = ThemeColor.primary
+        button.tintColor = .white
+        button.addCornerRadius(radius: 8.0)
+        return button
+    }()
     
+    // vertical StackView for all buttons
+    private lazy var allButtonsVStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            buttonsHStackView,
+            customTipButton
+        ])
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+        
     
-//MARK: - Init View
+//MARK: - INIT View
     init() {
         super.init(frame: .zero)
         layout()
@@ -80,6 +99,7 @@ class TipInputView: UIView {
     }
 }
 
+//MARK: - enum Tip
 enum Tip {
     case none
     case tenPercent
