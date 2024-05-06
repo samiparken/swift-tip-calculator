@@ -11,7 +11,11 @@ class BillInputView: UIView {
 
     // Constants
     private let billInputLabelView: BillInputLabelView = {
-        return BillInputLabelView()
+        let view = BillInputLabelView()
+        view.configure(
+            topText: "Enter",
+            bottomText: "your bill")
+        return view
     }()
     
     private let textFieldContainerView: UIView = {
@@ -159,5 +163,9 @@ class BillInputLabelView: UIView {
             make.height.equalTo(bottomSpacerView)
         }
     }
+    
+    func configure(topText: String, bottomText: String) {
+        topLabel.text = topText
+        bottomLabel.text = bottomText
+    }
 }
-
