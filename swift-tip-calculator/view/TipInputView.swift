@@ -78,26 +78,28 @@ class TipInputView: UIView {
     }
     private func layout() {
         [labelView, allButtonsVStackView].forEach(addSubview(_:))
-        
-        
+                
+        // Label
         labelView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.width.equalTo(68)
             make.height.equalTo(40)
-            make.centerY.equalTo(allButtonsVStackView.snp.centerY) //align horizontal
+            make.centerY.equalTo(buttonsHStackView.snp.centerY) //align horizontal
             make.trailing.equalTo(allButtonsVStackView.snp.leading ).offset(-24) // set order in horizontal
         }
         
-        //TextFieldContainer
+        // allButtonsVStackView
         allButtonsVStackView.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview()
+            make.top.bottom.trailing.equalToSuperview()
         }
+
+        
 
     }
     private func buildTipButton(tip: Tip) -> UIButton {
         let button = UIButton(type: .custom)
         button.backgroundColor = ThemeColor.primary
-        button.tintColor = .white
+        button.tintColor = .white 
         button.addCornerRadius(radius: 8.0)
         let text = NSMutableAttributedString(
             string: tip.stringValue,
