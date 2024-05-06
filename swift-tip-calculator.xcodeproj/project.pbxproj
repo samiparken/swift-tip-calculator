@@ -30,6 +30,7 @@
 		3184D23E2BE926D100817BB0 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3184D23D2BE926D100817BB0 /* CombineCocoa */; };
 		3184D2402BE926E800817BB0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3184D23F2BE926E800817BB0 /* SnapKit */; };
 		3184D2432BE940C200817BB0 /* TwoLineLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3184D2422BE940C200817BB0 /* TwoLineLabelView.swift */; };
+		3184D2462BE94DFB00817BB0 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3184D2452BE94DFB00817BB0 /* Tip.swift */; };
 		31A0ED292BE4E5D5000E7D39 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		316565C02BE3CB720008DE4E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		316565C32BE3D10F0008DE4E /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		3184D2422BE940C200817BB0 /* TwoLineLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLineLabelView.swift; sourceTree = "<group>"; };
+		3184D2452BE94DFB00817BB0 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 		3184D2442BE94DBB00817BB0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3184D2452BE94DFB00817BB0 /* Tip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				316565BE2BE3CB080008DE4E /* ThemeFont.swift in Sources */,
 				314E04192BE385BD0048F8C6 /* SceneDelegate.swift in Sources */,
 				316565C42BE3D10F0008DE4E /* LabelFactory.swift in Sources */,
+				3184D2462BE94DFB00817BB0 /* Tip.swift in Sources */,
 				316565B92BE3C26E0008DE4E /* SplitInputView.swift in Sources */,
 				316565B72BE3C2530008DE4E /* TipInputView.swift in Sources */,
 			);
