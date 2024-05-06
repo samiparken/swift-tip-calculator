@@ -120,10 +120,17 @@ class BillInputLabelView: UIView {
             font: ThemeFont.regular(ofSize: 16),
             textAlignment: .left)
     }()
+    
+    // top and bottom padding for auto layout
+    private let topSpacerView = UIView()
+    private let bottomSpacerView = UIView()
+    
     private lazy var vLabelStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [
+            topSpacerView,
             topLabel,
-            bottomLabel
+            bottomLabel,
+            bottomSpacerView
         ])
         view.axis = .vertical
         view.alignment = .leading
@@ -146,6 +153,10 @@ class BillInputLabelView: UIView {
         vLabelStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()  // for top, leading, bottom, trailing edges
             //make.top.bottom.equalToSuperview() // only for top and bottom
+        }
+        //Set the same padding size on the top and the bottom
+        topSpacerView.snp.makeConstraints{ make in
+            make.height.equalTo(bottomSpacerView)
         }
     }
 }
