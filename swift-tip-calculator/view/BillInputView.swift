@@ -21,7 +21,7 @@ class BillInputView: UIView {
         return view
     }()
     
-    private let currencyDomincationLabel: UILabel = {
+    private let currencyLabel: UILabel = {
         let label = LabelFactory.build(
             text: "kr",
             font: ThemeFont.bold(ofSize: 24))
@@ -82,21 +82,19 @@ class BillInputView: UIView {
             make.trailing.equalTo(textFieldContainerView.snp.leading).offset(-24)
         }
         
+        //TextFieldContainer
         textFieldContainerView.snp.makeConstraints { make in
             make.top.trailing.bottom.equalToSuperview()
         }
-        
-        textFieldContainerView.addSubview(currencyDomincationLabel)
+        textFieldContainerView.addSubview(currencyLabel)
         textFieldContainerView.addSubview(textField)
-        
-        currencyDomincationLabel.snp.makeConstraints { make in
+        textField.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.equalTo(textFieldContainerView.snp.leading).offset(16)
         }
-        
-        textField.snp.makeConstraints { make in
+        currencyLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalTo(currencyDomincationLabel.snp.trailing).offset(16)
+            make.leading.equalTo(textField.snp.trailing).offset(16)
             make.trailing.equalTo(textFieldContainerView.snp.trailing).offset(-16)
         }
     }
