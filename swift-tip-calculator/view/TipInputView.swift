@@ -21,7 +21,8 @@ class TipInputView: UIView {
     }()
     
     private lazy var tenPercentTipButton: UIButton = {
-        
+        let button = buildTipButton(tip: .tenPercent)
+        return button
     }()
        
 //MARK: - Init View
@@ -35,8 +36,23 @@ class TipInputView: UIView {
     private func layout() {
         backgroundColor = .systemPink
     }
-    private func buildTipButton() {
+    private func buildTipButton(tip: Tip) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = ThemeColor.primary
+        button.tintColor = .white
+        button.addCornerRadius(radius: 8.0)
+        let text = NSMutableAttributedString(
+            string: tip.stringValue,
+            attributes: [
+                .font: ThemeFont.bold(ofSize: 20)
+            ])
         
+        text.addAttributes([
+            .font: ThemeFont.bold(ofSize: 14)
+        ], range: NSMakeRange(2, 1))
+        
+        button.setAttributedTitle(text, for: .normal)
+        return button
     }
 }
 
