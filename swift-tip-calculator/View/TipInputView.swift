@@ -38,10 +38,18 @@ class TipInputView: UIView {
     }()
     private lazy var fifteenPercentTipButton: UIButton = {
         let button = buildTipButton(tip: .fifteenPercent)
+        button.tapPublisher.flatMap ({
+            Just(Tip.fifteenPercent)
+        }).assign(to: \.value, on: tipSubject)
+          .store(in: &cancellables)
         return button
     }()
     private lazy var twentyPercentTipButton: UIButton = {
         let button = buildTipButton(tip: .twentyPercent)
+        button.tapPublisher.flatMap ({
+            Just(Tip.twentyPercent)
+        }).assign(to: \.value, on: tipSubject)
+          .store(in: &cancellables)
         return button
     }()
     private lazy var buttonsHStackView: UIStackView = {
@@ -83,7 +91,7 @@ class TipInputView: UIView {
     
     /// CurrentValueSubject can have a default value while PassthorughSubject can't.
     private let tipSubject = CurrentValueSubject<Tip, Never>(.none) /// value to emit
-    private var valuePublisher: AnyPublisher<Tip, Never> {
+    var valuePublisher: AnyPublisher<Tip, Never> {
         return tipSubject.eraseToAnyPublisher()
     }
     private var cancellables = Set<AnyCancellable>()

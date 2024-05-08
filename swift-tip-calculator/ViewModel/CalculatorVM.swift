@@ -30,12 +30,16 @@ class CalculatorVM {
     func transform(input: Input) -> Output {
         
         //test
-        /// you can also check the value from billPublisher (BillInputView)
         /*
+        /// you can also check the value from billPublisher (BillInputView)
         input.billPublisher.sink { bill in
             print("the bill: \(bill)")
         }.store(in: &cancellables)
         */
+        
+        input.tipPublisher.sink { tip in
+            print("the tip: \(tip)")
+        }.store(in: &cancellables)
         
         let result = Result(
             amountPerPerson: 500,
