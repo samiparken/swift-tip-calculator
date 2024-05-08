@@ -43,7 +43,7 @@ class CalculatorVC: UIViewController {
     
     private func bind() {
         let input = CalculatorVM.Input(
-            billPublisher: Just(10).eraseToAnyPublisher(),
+            billPublisher: billInputView.valuePublisher,
             tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
             splitPublisher: Just(5).eraseToAnyPublisher())
                 
