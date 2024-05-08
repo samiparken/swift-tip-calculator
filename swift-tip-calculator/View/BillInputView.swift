@@ -9,7 +9,7 @@ import UIKit
 
 class BillInputView: UIView {
 
-    // Constants
+//MARK: - View Components
     private let billInputLabelView: TwoLineLabelView = {
         let view = TwoLineLabelView()
         view.configure(
@@ -24,7 +24,6 @@ class BillInputView: UIView {
         view.addRoundedCorners(radius: 8.0)
         return view
     }()
-    
     private let currencyLabel: UILabel = {
         let label = LabelFactory.build(
             text: "kr",
@@ -63,7 +62,7 @@ class BillInputView: UIView {
         return textField
     }()
     
-    //Init
+//MARK: - INIT view
     init() {
         super.init(frame: .zero)
         layout()
@@ -71,8 +70,6 @@ class BillInputView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // Methods
     private func layout() {
         //addSubview(billInputLabelView)
         //addSubview(textFieldContainerView)
