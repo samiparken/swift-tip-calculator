@@ -75,7 +75,7 @@ class BillInputView: UIView {
         return billSubject.eraseToAnyPublisher()
     }
             
-    //study
+    // for study
     /// this structure looks like the relationship between PassthroughSubject and AnyPublisher
     private var privateText: String? // it's like PassthroughSubject
     var publicText: String? { //it's like AnyPublisher
@@ -94,12 +94,13 @@ class BillInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // triggered when text in textField changes
     private func observe() {
+        
+        // triggered when text in textField changes
         textField.textPublisher.sink { [unowned self] text in
             billSubject.send(text?.doubleValue ?? 0)
-            //print("Text: \(text)")
-            privateText = text
+            //print("Text: \(text)") //for study
+            //privateText = text     //for study
         }.store(in: &cancellables)
     }
         
