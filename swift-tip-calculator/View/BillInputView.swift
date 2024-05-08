@@ -64,7 +64,7 @@ class BillInputView: UIView {
         return textField
     }()
 
-//MARK: - PassthroughSubject & Publisher
+//MARK: - PassthroughSubject & AnyPublisher
     /// PassthroughSubject makes it Observable by other classes
     /// PassthroughSubject can accept & emit values
     private let billSubject: PassthroughSubject<Double, Never> = .init()
@@ -74,9 +74,16 @@ class BillInputView: UIView {
     var valuePublisher: AnyPublisher<Double, Never> {
         return billSubject.eraseToAnyPublisher()
     }
-        
+            
+    //study
+    /// this structure looks like the relationship between PassthroughSubject and AnyPublisher
+    private var privateText: String? // it's like PassthroughSubject
+    var publicText: String? { //it's like AnyPublisher
+        return privateText
+    }
+    
     private var cancellables = Set<AnyCancellable>()
-
+    
 //MARK: - INIT view
     init() {
         super.init(frame: .zero)
@@ -92,6 +99,7 @@ class BillInputView: UIView {
         textField.textPublisher.sink { [unowned self] text in
             billSubject.send(text?.doubleValue ?? 0)
             //print("Text: \(text)")
+            privateText = text
         }.store(in: &cancellables)
     }
         
