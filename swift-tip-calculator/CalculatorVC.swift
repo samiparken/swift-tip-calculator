@@ -24,7 +24,7 @@ class CalculatorVC: UIViewController {
             billInputView,
             tipInputView,
             splitInputView,
-            UIView() // added for flex height to remove warning
+            UIView() /// added for flex height to remove warning
         ])
         stackView.axis = .vertical
         stackView.spacing = 36
@@ -38,7 +38,7 @@ class CalculatorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-        bind() //bind with ViewModel
+        bind() ///bind with ViewModel
     }
     
     private func bind() {
@@ -47,6 +47,11 @@ class CalculatorVC: UIViewController {
             tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
             splitPublisher: Just(5).eraseToAnyPublisher())
                 
+        /// You can also get the values from billInputView.valuePublisher like this
+        billInputView.valuePublisher.sink { bill in
+            print("bill: \(bill)")
+        }.store(in: &cancellables)
+        
         let output = vm.transform(input: input)
         output.updateViewPublisher.sink { result in
             print(">>>>> \(result)")
