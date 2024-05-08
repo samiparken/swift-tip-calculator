@@ -172,7 +172,7 @@ class TipInputView: UIView {
                     guard let text = controller.textFields?.first?.text, let value = Int(text) else { return }
                     self?.tipSubject.send(.custom(value: value))
                 }
-            [okayAction, cancelAction].forEach(controller.addAction(_:))
+            [okAction, cancelAction].forEach(controller.addAction(_:))
             return controller
         }()
         
