@@ -25,6 +25,15 @@ class TipInputView: UIView {
     // hStackView for tip buttons
     private lazy var tenPercentTipButton: UIButton = {
         let button = buildTipButton(tip: .tenPercent)
+        
+        //publish
+        ///Transform this tab event into another publisher/subject (tipSubject)
+        ///Set Tip.tenPercent on tipSubject via \.value property
+        button.tapPublisher.flatMap ({
+            Just(Tip.tenPercent)
+        }).assign(to: \.value, on: tipSubject)
+          .store(in: &cancellables)
+        
         return button
     }()
     private lazy var fifteenPercentTipButton: UIButton = {
@@ -73,16 +82,20 @@ class TipInputView: UIView {
 //MARK: - CurrentValueSubject
     
     /// CurrentValueSubject can have a default value while PassthorughSubject can't.
-    private let tipSubject = CurrentValueSubject<Tip, Never>(.none)
+    private let tipSubject = CurrentValueSubject<Tip, Never>(.none) /// value to emit
     private var valuePublisher: AnyPublisher<Tip, Never> {
         return tipSubject.eraseToAnyPublisher()
     }
-    
+    private var cancellables = Set<AnyCancellable>()
+
     
 //MARK: - INIT View
     init() {
         super.init(frame: .zero)
         layout()
+        
+        ///print initial value of tipSubject
+        //print("tip: \(tipSubject.value)")
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
