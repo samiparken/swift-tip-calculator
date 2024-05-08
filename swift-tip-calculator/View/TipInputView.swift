@@ -175,9 +175,6 @@ class TipInputView: UIView {
             [okAction, cancelAction].forEach(controller.addAction(_:))
             return controller
         }()
-        
-        
-        
-    }
-            
+        parentViewController?.present(alertController, animated: true)
+    }            
 }
