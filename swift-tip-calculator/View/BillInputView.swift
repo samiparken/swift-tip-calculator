@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class BillInputView: UIView {
 
-    // Constants
+//MARK: - View Components
     private let billInputLabelView: TwoLineLabelView = {
         let view = TwoLineLabelView()
         view.configure(
@@ -21,10 +23,9 @@ class BillInputView: UIView {
     private let textFieldContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.addCornerRadius(radius: 8.0)
+        view.addRoundedCorners(radius: 8.0)
         return view
     }()
-    
     private let currencyLabel: UILabel = {
         let label = LabelFactory.build(
             text: "kr",
@@ -62,17 +63,46 @@ class BillInputView: UIView {
         textField.inputAccessoryView = toolBar
         return textField
     }()
+
+//MARK: - PassthroughSubject & AnyPublisher
+    /// PassthroughSubject makes it Observable by other classes
+    /// PassthroughSubject can accept & emit values
+    private let billSubject: PassthroughSubject<Double, Never> = .init()
     
-    //Init
+    /// it publishes billSubject to other class
+    /// AnyPublisher can only emit values (read only)
+    var valuePublisher: AnyPublisher<Double, Never> {
+        return billSubject.eraseToAnyPublisher()
+    }
+            
+    //study
+    /// this structure looks like the relationship between PassthroughSubject and AnyPublisher
+    private var privateText: String? // it's like PassthroughSubject
+    var publicText: String? { //it's like AnyPublisher
+        return privateText
+    }
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+//MARK: - INIT view
     init() {
         super.init(frame: .zero)
         layout()
+        observe()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Methods
+    // triggered when text in textField changes
+    private func observe() {
+        textField.textPublisher.sink { [unowned self] text in
+            billSubject.send(text?.doubleValue ?? 0)
+            //print("Text: \(text)")
+            privateText = text
+        }.store(in: &cancellables)
+    }
+        
     private func layout() {
         //addSubview(billInputLabelView)
         //addSubview(textFieldContainerView)

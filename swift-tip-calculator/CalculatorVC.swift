@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class CalculatorVC: UIViewController {
 
@@ -23,16 +24,41 @@ class CalculatorVC: UIViewController {
             billInputView,
             tipInputView,
             splitInputView,
-            UIView() // added for flex height to remove warning
+            UIView() /// added for flex height to remove warning
         ])
         stackView.axis = .vertical
         stackView.spacing = 36
         return stackView
     }()
         
+    private let vm = CalculatorVM()
+    private var cancellables = Set<AnyCancellable>()
+        
+//MARK: - INIT view
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        bind() ///bind with ViewModel
+    }
+    
+    private func bind() {
+        //test
+        /// You can also get the values from billInputView.valuePublisher like this
+        /*
+        billInputView.valuePublisher.sink { bill in
+            print("bill: \(bill)")
+        }.store(in: &cancellables)
+        */
+        
+        let input = CalculatorVM.Input(
+            billPublisher: billInputView.valuePublisher,
+            tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
+            splitPublisher: Just(5).eraseToAnyPublisher())
+        
+        let output = vm.transform(input: input)
+        output.updateViewPublisher.sink { result in
+            print(">>>>> \(result)")
+        }.store(in: &cancellables)
     }
     
     private func layout() {
