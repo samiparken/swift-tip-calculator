@@ -63,18 +63,21 @@ class BillInputView: UIView {
         textField.inputAccessoryView = toolBar
         return textField
     }()
-    
-    // PassthroughSubject makes it Observable by other classes
+
+//MARK: - PassthroughSubject & Publisher
+    /// PassthroughSubject makes it Observable by other classes
+    /// PassthroughSubject can accept & emit values
     private let billSubject: PassthroughSubject<Double, Never> = .init()
     
-    // it publishes billSubject to other class
+    /// it publishes billSubject to other class
+    /// AnyPublisher can only emit values (read only)
     var valuePublisher: AnyPublisher<Double, Never> {
         return billSubject.eraseToAnyPublisher()
     }
         
     private var cancellables = Set<AnyCancellable>()
 
-    //MARK: - INIT view
+//MARK: - INIT view
     init() {
         super.init(frame: .zero)
         layout()

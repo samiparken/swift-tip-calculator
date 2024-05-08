@@ -42,11 +42,6 @@ class CalculatorVC: UIViewController {
     }
     
     private func bind() {
-        let input = CalculatorVM.Input(
-            billPublisher: billInputView.valuePublisher,
-            tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
-            splitPublisher: Just(5).eraseToAnyPublisher())
-                
         //test
         /// You can also get the values from billInputView.valuePublisher like this
         /*
@@ -54,6 +49,11 @@ class CalculatorVC: UIViewController {
             print("bill: \(bill)")
         }.store(in: &cancellables)
         */
+        
+        let input = CalculatorVM.Input(
+            billPublisher: billInputView.valuePublisher,
+            tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
+            splitPublisher: Just(5).eraseToAnyPublisher())
         
         let output = vm.transform(input: input)
         output.updateViewPublisher.sink { result in
