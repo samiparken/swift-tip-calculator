@@ -30,11 +30,15 @@ class CalculatorVC: UIViewController {
         return stackView
     }()
         
+    private let vm = CalculatorVM()
+    
+    
+    
+//MARK: - INIT view
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
     }
-    
     private func layout() {
         view.backgroundColor = ThemeColor.bg
         view.addSubview(vStackView)

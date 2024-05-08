@@ -32,6 +32,8 @@
 		3184D2432BE940C200817BB0 /* TwoLineLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3184D2422BE940C200817BB0 /* TwoLineLabelView.swift */; };
 		3184D2462BE94DFB00817BB0 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3184D2452BE94DFB00817BB0 /* Tip.swift */; };
 		31A0ED292BE4E5D5000E7D39 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */; };
+		31B413F42BEB7927005D812D /* CalculatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B413F32BEB7927005D812D /* CalculatorVM.swift */; };
+		31B413F62BEB7AFE005D812D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B413F52BEB7AFE005D812D /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		3184D2422BE940C200817BB0 /* TwoLineLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLineLabelView.swift; sourceTree = "<group>"; };
 		3184D2452BE94DFB00817BB0 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		31B413F32BEB7927005D812D /* CalculatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorVM.swift; sourceTree = "<group>"; };
+		31B413F52BEB7AFE005D812D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		314E04152BE385BD0048F8C6 /* swift-tip-calculator */ = {
 			isa = PBXGroup;
 			children = (
+				31B413F22BEB78F9005D812D /* ViewModel */,
 				3184D2442BE94DBB00817BB0 /* Model */,
 				316565C22BE3D0F60008DE4E /* Factory */,
 				316565BF2BE3CB520008DE4E /* Extension */,
@@ -214,8 +219,17 @@
 			isa = PBXGroup;
 			children = (
 				3184D2452BE94DFB00817BB0 /* Tip.swift */,
+				31B413F52BEB7AFE005D812D /* Result.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		31B413F22BEB78F9005D812D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				31B413F32BEB7927005D812D /* CalculatorVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,9 +388,11 @@
 				314E04172BE385BD0048F8C6 /* AppDelegate.swift in Sources */,
 				3184D2432BE940C200817BB0 /* TwoLineLabelView.swift in Sources */,
 				316565BE2BE3CB080008DE4E /* ThemeFont.swift in Sources */,
+				31B413F42BEB7927005D812D /* CalculatorVM.swift in Sources */,
 				314E04192BE385BD0048F8C6 /* SceneDelegate.swift in Sources */,
 				316565C42BE3D10F0008DE4E /* LabelFactory.swift in Sources */,
 				3184D2462BE94DFB00817BB0 /* Tip.swift in Sources */,
+				31B413F62BEB7AFE005D812D /* Result.swift in Sources */,
 				316565B92BE3C26E0008DE4E /* SplitInputView.swift in Sources */,
 				316565B72BE3C2530008DE4E /* TipInputView.swift in Sources */,
 			);
