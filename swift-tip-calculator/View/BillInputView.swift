@@ -67,6 +67,11 @@ class BillInputView: UIView {
     // PassthroughSubject makes it Observable by other classes
     private let billSubject: PassthroughSubject<Double, Never> = .init()
     
+    // it publishes billSubject to other class
+    var valuePublisher: AnyPublisher<Double, Never> {
+        return billSubject.eraseToAnyPublisher()
+    }
+        
     private var cancellables = Set<AnyCancellable>()
 
     //MARK: - INIT view
