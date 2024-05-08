@@ -34,6 +34,7 @@
 		31A0ED292BE4E5D5000E7D39 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */; };
 		31B413F42BEB7927005D812D /* CalculatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B413F32BEB7927005D812D /* CalculatorVM.swift */; };
 		31B413F62BEB7AFE005D812D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B413F52BEB7AFE005D812D /* Result.swift */; };
+		31B413F82BEB8323005D812D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B413F72BEB8323005D812D /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		31B413F32BEB7927005D812D /* CalculatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorVM.swift; sourceTree = "<group>"; };
 		31B413F52BEB7AFE005D812D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		31B413F72BEB8323005D812D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			children = (
 				316565C02BE3CB720008DE4E /* UIColor+Extension.swift */,
 				31A0ED282BE4E5D5000E7D39 /* UIView+Extension.swift */,
+				31B413F72BEB8323005D812D /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				314E04172BE385BD0048F8C6 /* AppDelegate.swift in Sources */,
 				3184D2432BE940C200817BB0 /* TwoLineLabelView.swift in Sources */,
 				316565BE2BE3CB080008DE4E /* ThemeFont.swift in Sources */,
+				31B413F82BEB8323005D812D /* String+Extension.swift in Sources */,
 				31B413F42BEB7927005D812D /* CalculatorVM.swift in Sources */,
 				314E04192BE385BD0048F8C6 /* SceneDelegate.swift in Sources */,
 				316565C42BE3D10F0008DE4E /* LabelFactory.swift in Sources */,
