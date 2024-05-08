@@ -29,10 +29,13 @@ class CalculatorVM {
 //MARK: - Transform
     func transform(input: Input) -> Output {
         
+        //test
         /// you can also check the value from billPublisher (BillInputView)
+        /*
         input.billPublisher.sink { bill in
             print("the bill: \(bill)")
         }.store(in: &cancellables)
+        */
         
         let result = Result(
             amountPerPerson: 500,

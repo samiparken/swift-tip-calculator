@@ -47,10 +47,13 @@ class CalculatorVC: UIViewController {
             tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
             splitPublisher: Just(5).eraseToAnyPublisher())
                 
+        //test
         /// You can also get the values from billInputView.valuePublisher like this
+        /*
         billInputView.valuePublisher.sink { bill in
             print("bill: \(bill)")
         }.store(in: &cancellables)
+        */
         
         let output = vm.transform(input: input)
         output.updateViewPublisher.sink { result in
