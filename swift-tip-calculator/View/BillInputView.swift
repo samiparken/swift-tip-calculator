@@ -64,6 +64,9 @@ class BillInputView: UIView {
         return textField
     }()
     
+    // PassthroughSubject makes it Observable by other classes
+    private let billSubject: PassthroughSubject<Double, Never> = .init()
+    
     private var cancellables = Set<AnyCancellable>()
 
     //MARK: - INIT view
@@ -79,6 +82,7 @@ class BillInputView: UIView {
     // triggered when text in textField changes
     private func observe() {
         textField.textPublisher.sink { text in
+            billSubject.send(text?.doubleValue)
             print("Text: \(text)")
         }.store(in: &cancellables)
     }
