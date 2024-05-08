@@ -81,9 +81,9 @@ class BillInputView: UIView {
     
     // triggered when text in textField changes
     private func observe() {
-        textField.textPublisher.sink { text in
-            billSubject.send(text?.doubleValue)
-            print("Text: \(text)")
+        textField.textPublisher.sink { [unowned self] text in
+            billSubject.send(text?.doubleValue ?? 0)
+            //print("Text: \(text)")
         }.store(in: &cancellables)
     }
         
