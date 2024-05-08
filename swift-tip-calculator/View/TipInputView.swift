@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class TipInputView: UIView {
     
@@ -67,7 +69,15 @@ class TipInputView: UIView {
         stackView.distribution = .fillEqually
         return stackView
     }()
-        
+
+//MARK: - CurrentValueSubject
+    
+    /// CurrentValueSubject can have a default value while PassthorughSubject can't.
+    private let tipSubject = CurrentValueSubject<Tip, Never>(.none)
+    private var valuePublisher: AnyPublisher<Tip, Never> {
+        return tipSubject.eraseToAnyPublisher()
+    }
+    
     
 //MARK: - INIT View
     init() {
@@ -85,8 +95,8 @@ class TipInputView: UIView {
             make.leading.equalToSuperview()
             make.width.equalTo(68)
             make.height.equalTo(40)
-            make.centerY.equalTo(buttonsHStackView.snp.centerY) //align horizontal
-            make.trailing.equalTo(allButtonsVStackView.snp.leading ).offset(-24) // set order in horizontal
+            make.centerY.equalTo(buttonsHStackView.snp.centerY) ///align horizontal
+            make.trailing.equalTo(allButtonsVStackView.snp.leading ).offset(-24) /// set order in horizontal
         }
         
         // allButtonsVStackView
@@ -97,13 +107,13 @@ class TipInputView: UIView {
     private func buildTipButton(tip: Tip) -> UIButton {
         let button = UIButton(type: .custom)
         button.backgroundColor = ThemeColor.primary
-        button.tintColor = .white //it's overwritten by the attributes below
+        button.tintColor = .white ///it's overwritten by the attributes below
         button.addRoundedCorners(radius: 8.0)
         let text = NSMutableAttributedString(
             string: tip.stringValue,
             attributes: [
                 .font: ThemeFont.bold(ofSize: 20),
-                .foregroundColor: UIColor.white  //this will apply white color on the attributed text
+                .foregroundColor: UIColor.white  ///this will apply white color on the attributed text
             ])
         //percent
         text.addAttributes([
