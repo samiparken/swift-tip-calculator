@@ -52,7 +52,7 @@ class TipInputView: UIView {
         button.titleLabel?.font = ThemeFont.bold(ofSize: 20)
         button.backgroundColor = ThemeColor.primary
         button.tintColor = .white
-        button.addCornerRadius(radius: 8.0)
+        button.addRoundedCorners(radius: 8.0)
         return button
     }()
     
@@ -98,7 +98,7 @@ class TipInputView: UIView {
         let button = UIButton(type: .custom)
         button.backgroundColor = ThemeColor.primary
         button.tintColor = .white //it's overwritten by the attributes below
-        button.addCornerRadius(radius: 8.0)
+        button.addRoundedCorners(radius: 8.0)
         let text = NSMutableAttributedString(
             string: tip.stringValue,
             attributes: [
