@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class BillInputView: UIView {
 
@@ -62,14 +64,25 @@ class BillInputView: UIView {
         return textField
     }()
     
-//MARK: - INIT view
+    private var cancellables = Set<AnyCancellable>()
+
+    //MARK: - INIT view
     init() {
         super.init(frame: .zero)
         layout()
+        observe()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // triggered when text in textField changes
+    private func observe() {
+        textField.textPublisher.sink { text in
+            print("Text: \(text)")
+        }.store(in: &cancellables)
+    }
+        
     private func layout() {
         //addSubview(billInputLabelView)
         //addSubview(textFieldContainerView)
